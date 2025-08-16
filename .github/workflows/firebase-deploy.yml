@@ -14,15 +14,13 @@ jobs:
       - name: Install Firebase CLI
         run: npm i -g firebase-tools
       - name: Install functions deps
-        working-directory: photomong-cloud/functions
+        working-directory: functions
         run: npm ci
       - name: Deploy to Firebase
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
           PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
         run: |
-          cd photomong-cloud
-          if [ -n "$PROJECT_ID" ]; then jq ".projects.default=\"$PROJECT_ID\"" .firebaserc > .firebaserc.tmp && mv .firebaserc.tmp .firebaserc; fi
           firebase deploy --project $PROJECT_ID --only hosting,functions,firestore:rules,storage
 
 
