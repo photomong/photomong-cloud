@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Photomong Dashboard</title>
+    <style>body{font-family:system-ui,Segoe UI,Apple SD Gothic Neo,Malgun Gothic,Arial;margin:24px} table{border-collapse:collapse} td,th{border:1px solid #ddd;padding:6px 10px}</style>
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
+      import { getFirestore, collection, query, orderBy, limit, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js";
+      const cfg = {
+        apiKey: "YOUR_KEY",
+        authDomain: "YOUR_AUTHDOMAIN",
+        projectId: "YOUR_PROJECT_ID"
+      };
+      const app = initializeApp(cfg);
+      const db = getFirestore(app);
+      const tbody = document.querySelector('#kiosks');
+      onSnapshot(query(collection(db,'kiosks'), orderBy('lastSeen','desc'), limit(50)), snap => {
+        tbody.innerHTML = '';
+        snap.forEach(doc => {
+          const d = doc.data();
+          const tr = document.createElement('tr');
+          tr.innerHTML = `<td>${doc.id}</td><td>${d.lastSeen?.toDate?.()||d.lastSeen||''}</td><td>${d.ip||''}</td>`;
+          tbody.appendChild(tr);
+        })
+      })
+    </script>
+  </head>
+  <body>
+    <h1>Photomong Dashboard</h1>
+    <table>
+      <thead><tr><th>Kiosk</th><th>Last Seen</th><th>IP</th></tr></thead>
+      <tbody id="kiosks"></tbody>
+    </table>
+  </body>
+</html>
+
+

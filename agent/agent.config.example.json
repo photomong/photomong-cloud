@@ -1,0 +1,16 @@
+{
+  "firebase": {
+    "apiKey": "",
+    "authDomain": "",
+    "projectId": "",
+    "storageBucket": "",
+    "appId": ""
+  },
+  "kioskId": "kiosk-001",
+  "email": "kiosk-001@example.com",
+  "password": "CHANGE_ME",
+  "watchDir": "C:\\NXON\\D3_PHOTOMONG\\OutImage",
+  "version": "1.0.0"
+}
+
+

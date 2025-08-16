@@ -1,0 +1,16 @@
+{
+  "name": "photomong-agent",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "start": "node agent.js"
+  },
+  "dependencies": {
+    "chokidar": "^3.6.0",
+    "firebase": "^10.12.3",
+    "node-fetch": "^3.3.2"
+  }
+}
+
+

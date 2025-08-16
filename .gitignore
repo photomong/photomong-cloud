@@ -1,0 +1,11 @@
+**/node_modules/
+.firebase/
+.runtimeconfig.json
+.env
+.DS_Store
+agent/agent.config.json
+functions/lib/
+functions/.cache/
+
+
+tools/
