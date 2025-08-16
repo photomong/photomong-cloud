@@ -13,14 +13,10 @@ jobs:
           node-version: 20
       - name: Install Firebase CLI
         run: npm i -g firebase-tools
-      - name: Install functions deps
-        working-directory: functions
-        run: npm install --no-audit --no-fund
-      - name: Deploy to Firebase
+      - name: Deploy to Firebase (hosting/rules/storage)
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
           PROJECT_ID: ${{ secrets.FIREBASE_PROJECT_ID }}
         run: |
-          firebase deploy --project $PROJECT_ID --only hosting,functions,firestore:rules,storage
-
-
+          firebase --version
+          firebase deploy --project "$PROJECT_ID" --token "$FIREBASE_TOKEN" --only hosting,firestore:rules,storage
