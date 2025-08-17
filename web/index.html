@@ -9,9 +9,12 @@
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js";
       import { getFirestore, collection, query, orderBy, limit, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js";
       const cfg = {
-        apiKey: "YOUR_KEY",
-        authDomain: "YOUR_AUTHDOMAIN",
-        projectId: "YOUR_PROJECT_ID"
+  apiKey: "AIzaSyCP7uUqL7a3t9ZHd1GSMlHO1AHeg7Uzkuc",
+  authDomain: "fir-pipeline-setup-tool.firebaseapp.com",
+  projectId: "firebase-pipeline-setup-tool",
+  storageBucket: "firebase-pipeline-setup-tool.firebasestorage.app",
+  messagingSenderId: "727805975740",
+  appId: "1:727805975740:web:ad9ba0b6d41916905844b9"
       };
       const app = initializeApp(cfg);
       const db = getFirestore(app);
